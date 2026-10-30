@@ -1,7 +1,10 @@
+# SPDX-FileCopyrightText: 2025-2026 The French Monkey
+# SPDX-License-Identifier: GPL-3.0-or-later
+
 bl_info = {
     "name": "NodeRack",
     "author": "The French Monkey",
-    "version": (1, 0, 0),
+    "version": (1, 0, 1),
     "blender": (4, 2, 0),
     "location": "Node Editor > N-Panel > NodeRack",
     "description": "Advanced node browser with live search, colored categories, and custom node storage",
