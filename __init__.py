@@ -4,7 +4,7 @@
 bl_info = {
     "name": "NodeRack",
     "author": "The French Monkey",
-    "version": (1, 0, 1),
+    "version": (1, 0, 2),
     "blender": (4, 2, 0),
     "location": "Node Editor > N-Panel > NodeRack",
     "description": "Advanced node browser with live search, colored categories, and custom node storage",
@@ -17,6 +17,11 @@ import json
 import os
 from bpy.types import Operator, Panel, PropertyGroup, Menu
 from bpy.props import StringProperty, BoolProperty, CollectionProperty, PointerProperty, IntProperty
+
+try:
+    from . import relay_updater
+except ImportError:  # the Addon Collection has its own updates
+    relay_updater = None
 
 # --------------------------------------------------------------------------
 # CATEGORY COLORS
@@ -1133,6 +1138,8 @@ class NR_PT_browser(Panel):
     bl_category = "NodeRack"
     
     def draw(self, context):
+        if relay_updater:
+            relay_updater.draw(self.layout)
         layout = self.layout
         props = context.window_manager.nr_props
         
@@ -1380,11 +1387,15 @@ classes = (
 )
 
 def register():
+    if relay_updater:
+        relay_updater.register("blender-noderack")
     for c in classes:
         bpy.utils.register_class(c)
     bpy.types.WindowManager.nr_props = PointerProperty(type=NR_Props)
 
 def unregister():
+    if relay_updater:
+        relay_updater.unregister()
     if hasattr(bpy.types.WindowManager, "nr_props"):
         del bpy.types.WindowManager.nr_props
     for c in reversed(classes):
