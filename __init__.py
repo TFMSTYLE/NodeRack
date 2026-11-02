@@ -4,7 +4,7 @@
 bl_info = {
     "name": "NodeRack",
     "author": "The French Monkey",
-    "version": (1, 0, 2),
+    "version": (1, 0, 3),
     "blender": (4, 2, 0),
     "location": "Node Editor > N-Panel > NodeRack",
     "description": "Advanced node browser with live search, colored categories, and custom node storage",

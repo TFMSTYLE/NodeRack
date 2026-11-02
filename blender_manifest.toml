@@ -1,7 +1,7 @@
 schema_version = "1.0.0"
 
 id = "tfmstyle_noderack"
-version = "1.0.2"
+version = "1.0.3"
 name = "TFMSTYLE - NodeRack"
 tagline = "Node browser with live search, colored categories, custom nodes"
 maintainer = "The French Monkey"
